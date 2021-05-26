@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  web:
+    build: .
+    container_name: utmapp-web
+    ports:
+      - "80:80"
+    env_file:
+      - .env
+    depends_on:
+      - db
+    networks:
+      - utmapp-network
+
+  db:
+    image: "microsoft/mssql-server-linux"
+    container_name: utmapp-db
+    env_file:
+      - .env
+    ports:
+      - "1433:1433"
+    networks:
+      - utmapp-network
+
+networks:
+  utmapp-network:

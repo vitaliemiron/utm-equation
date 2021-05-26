@@ -1,0 +1,15 @@
+overwrite: true
+schema:
+  - https://insomniacopensource.000webhostapp.com/graphql
+
+documents: './graphql/**/*.graphql'
+generates:
+  generated/index.tsx:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-react-apollo'
+    config:
+      reactApolloVersion: 3
+      avoidOptionals: true
+      preResolveTypes: true
